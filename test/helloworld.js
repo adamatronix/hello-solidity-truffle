@@ -7,4 +7,12 @@ contract('HelloWorld', (accounts) => {
 
       assert.equal(value, 'Adam')
   })
+
+  it('should change my name', async () => {
+    const instance = await HelloWorld.deployed()
+    await instance.changeMyName('Bob');
+    const value = await instance.getMyName.call()
+
+    assert.equal(value,'Bob')
+  })
 })
